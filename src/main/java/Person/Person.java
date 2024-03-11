@@ -1,22 +1,25 @@
 package Person;
 
 import Utils.Addres;
+
 import java.util.Date;
 
 public class Person {
+  public int idPerson;
   public String name;
   public Date birthdate;
   Addres addres;
 
   @Override
   public String toString() {
-    return this.name + " " + this.birthdate + " " + this.addres.toString();
+    return this.idPerson + "," + this.name + "," + this.birthdate + "," + this.addres.toString();
   }
 
-  public Person(String name, Date birth, Addres addres) {
+  public Person(int id, String name, Date birth, Addres addres) {
     this.addres = new Addres(addres);
     this.name = name;
     this.birthdate = birth;
+    this.idPerson = id;
   }
 
   public Person() {

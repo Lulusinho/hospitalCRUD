@@ -1,23 +1,28 @@
+
 import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
+import java.util.Date;
 
-import org.apache.commons.csv.CSVRecord;
-
-import Parser.Parsercsv;
+import Parser.*;
+import Person.*;
+import Utils.*;
 
 public class App {
   public static void main(String[] args) {
-    final Path programResourcePath = FileSystems.getDefault().getPath("src/main/resources/");
+    Person ps = new Person(Sequence.nextValue(), "LUIS", new Date(), new Addres("logradouro", "bairro", 2078, 700882999));
+
+    Parser driver = null;
+    Doctor doc = new Doctor(ps, new Speciality("neuro"), 9999, 123430);
+
     try {
-      Parsercsv parser = new Parsercsv(programResourcePath, "/Person/Doctor.csv", "ID", "nome", "data_nascimento",
-          "Endereco_ID");
-      for (CSVRecord record : parser.parser) {
-        System.out.println(record.get("ID"));
-      }
-      parser.parser.close();
+      driver = new Parser("Doctor.csv", "CRM", "name", "Especialidade", "valor_Hora");
+      driver.write.printRecord(doc);
+
+      driver.write.flush();
+
+      driver.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
+
   }
 }

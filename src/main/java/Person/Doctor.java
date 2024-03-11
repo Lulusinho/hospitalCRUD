@@ -33,8 +33,7 @@ public class Doctor extends Person implements Cloneable {
 
   @Override
   public String toString() {
-
-    return new String("[" + this.crm + " " + super.toString() + " " + this.doctorSpeciality + " " + this.payment + "]");
+    return this.crm + "," + this.idPerson + "," + this.doctorSpeciality + this.payment;
   }
 
 }

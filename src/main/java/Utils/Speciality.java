@@ -4,9 +4,17 @@ import java.util.ArrayList;
 
 public class Speciality {
   private ArrayList<String> name;
+
   @Override
-  public String toString(){
-    return name.toString();
+  public String toString() {
+    String var = new String();
+    for (var iterable : name) {
+      var += iterable + ",";
+    }
+    if (var.endsWith(",")) {
+      var.subSequence(0, var.length() - 1);
+    }
+    return var;
   }
 
   public Speciality() {
@@ -29,4 +37,6 @@ public class Speciality {
       this.name.add(name);
     }
   }
+
+
 }

@@ -6,7 +6,7 @@ public class Healthinsurance {
 
   @Override
   public String toString() {
-    return "[" + this.name + this.monthlypayment + "]";
+    return this.name + "," + this.monthlypayment;
   }
 
   public Healthinsurance(String name, double pays) {

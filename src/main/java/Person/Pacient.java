@@ -7,7 +7,7 @@ public class Pacient extends Person implements Cloneable {
   public Healthinsurance plan;
 
   public Pacient(Pacient other) {
-    super(other.name, other.birthdate, other.addres);
+    super(other.idPerson, other.name, other.birthdate, other.addres);
     this.cpf = other.cpf;
     this.plan = other.plan;
   }
@@ -20,7 +20,7 @@ public class Pacient extends Person implements Cloneable {
 
   @Override
   public String toString() {
-    return "[" + this.cpf + super.toString() + this.plan + "]";
+    return this.cpf + "," + this.name + "," +this.birthdate.toString()+ this.addres + "," + "," + this.plan;
   }
 
   @Override

@@ -24,10 +24,14 @@ public class Addres implements Cloneable {
       return new Addres(this);
     }
   }
-
   @Override
   public String toString() {
-    return "[" + this.code + " " + this.bairro + " " + this.number + " " + this.logradouro + "]";
+    return this.logradouro + "," + this.bairro + "," + this.number+ "," + this.code;
+  }
+
+
+  public String[] stringfy() {
+    return new String[] {String.valueOf(this.code), this.bairro, String.valueOf(this.number), this.logradouro };
   }
 
   public Addres(Addres other) {
