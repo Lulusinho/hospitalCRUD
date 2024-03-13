@@ -1,15 +1,15 @@
 package Utils;
 
 public class Addres implements Cloneable {
-  public String logradouro;
-  public String bairro;
+  public String public_area;
+  public String district;
   public Integer code;
   public Integer number;
 
-  public Addres(String logradouro, String bairro, Integer code, Integer number) {
-    this.bairro = bairro;
+  public Addres(String public_area, String district, Integer code, Integer number) {
+    this.district = district;
     this.code = code;
-    this.logradouro = logradouro;
+    this.public_area = public_area;
     this.number = number;
   }
 
@@ -26,18 +26,18 @@ public class Addres implements Cloneable {
   }
   @Override
   public String toString() {
-    return this.logradouro + "," + this.bairro + "," + this.number+ "," + this.code;
+    return this.public_area + "," + this.district + "," + this.number+ "," + this.code;
   }
 
 
   public String[] stringfy() {
-    return new String[] {String.valueOf(this.code), this.bairro, String.valueOf(this.number), this.logradouro };
+    return new String[] {String.valueOf(this.code), this.district, String.valueOf(this.number), this.public_area };
   }
 
   public Addres(Addres other) {
-    this.bairro = other.bairro;
+    this.district = other.district;
     this.code = other.code;
-    this.logradouro = other.logradouro;
+    this.public_area = other.public_area;
     this.number = other.number;
   }
 
@@ -45,32 +45,32 @@ public class Addres implements Cloneable {
     return new Addres(this);
   }
 
-  public String getBairro() {
-    return bairro;
+  public String getdistrict() {
+    return district;
   }
 
   public Integer getCode() {
     return code;
   }
 
-  public String getLogradouro() {
-    return logradouro;
+  public String getpublic_area() {
+    return public_area;
   }
 
   public Integer getNumber() {
     return number;
   }
 
-  public void setBairro(String bairro) {
-    this.bairro = bairro;
+  public void setdistrict(String district) {
+    this.district = district;
   }
 
   public void setCode(Integer code) {
     this.code = code;
   }
 
-  public void setLogradouro(String logradouro) {
-    this.logradouro = logradouro;
+  public void setpublic_area(String public_area) {
+    this.public_area = public_area;
   }
 
   public void setNumber(Integer number) {

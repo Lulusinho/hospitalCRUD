@@ -4,7 +4,6 @@ import org.apache.commons.csv.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 
 public class CSVSpecifier {
   public File data;
@@ -12,7 +11,7 @@ public class CSVSpecifier {
   public CSVFormat format;
 
   public CSVSpecifier(String fname) throws IOException {
-    File[] files = Path.of("/media/luis/HD/documentos/java/app/hospital/src/main/resources/").toFile().listFiles();
+    File[] files = Path.of("./src/main/resources/").toFile().listFiles();
     for (File file : files) {
       if (file.getName().equals(fname)) {
         this.data = file;
@@ -20,7 +19,7 @@ public class CSVSpecifier {
         return;
       }
     }
-    this.data = new File("/media/luis/HD/documentos/java/app/hospital/src/main/resources/" + fname);
+    this.data = new File("./src/main/resources/" + fname);
     this.data.createNewFile();
     this.fileAlreadyExist = false;
   }
@@ -44,6 +43,5 @@ public class CSVSpecifier {
     }
 
   }
-
 
 }
