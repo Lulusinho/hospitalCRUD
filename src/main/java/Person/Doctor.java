@@ -3,11 +3,11 @@ package Person;
 import Utils.Speciality;
 
 public class Doctor extends Person implements Cloneable {
-  public int crm;
+  public Integer crm;
   public double payment;
   public Speciality doctorSpeciality;
 
-  public Doctor(Person sup, Speciality doctorSpeciality, double pays, int crm) {
+  public Doctor(Person sup, Speciality doctorSpeciality, double pays, Integer crm) {
     super(sup);
     this.doctorSpeciality = doctorSpeciality;
     this.payment = pays;
@@ -33,7 +33,9 @@ public class Doctor extends Person implements Cloneable {
 
   @Override
   public String toString() {
-    return this.crm + "," + this.idPerson + "," + this.doctorSpeciality + this.payment;
+    return this.crm + ", " + this.crm + "," + this.payment;
   }
+
+
 
 }

@@ -2,12 +2,17 @@
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Person/Doctor.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Person/Person.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/actions/Appointment.java
+/media/luis/HD/documentos/java/app/hospital/src/main/java/DBhospital/Connector.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Person/Pacient.java
+/media/luis/HD/documentos/java/app/hospital/src/main/java/DBhospital/DoctorPersistency.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/App.java
+/media/luis/HD/documentos/java/app/hospital/src/main/java/DBhospital/ProcedurePersistency.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Utils/Speciality.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Utils/Addres.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Utils/Healthinsurance.java
+/media/luis/HD/documentos/java/app/hospital/src/main/java/DBhospital/PacientPersistency.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Parser/Parser.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/actions/Procedure.java
+/media/luis/HD/documentos/java/app/hospital/src/main/java/DBhospital/AppointmentPersistency.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Utils/Rooms.java
 /media/luis/HD/documentos/java/app/hospital/src/main/java/Utils/Sequence.java

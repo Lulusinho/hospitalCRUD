@@ -1,31 +1,34 @@
 package Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Speciality {
   private ArrayList<String> name;
 
   @Override
   public String toString() {
-    String var = new String();
+    String var = new String("");
+    StringBuffer var2 = new StringBuffer();
     for (var iterable : name) {
       var += iterable + ",";
     }
     if (var.endsWith(",")) {
-      var.subSequence(0, var.length() - 1);
+      var2 = new StringBuffer(var);
+      var2.deleteCharAt(var2.length() - 1);
     }
-    return var;
+    return new String(var2);
   }
 
   public Speciality() {
     this.name = new ArrayList<String>(3);
   }
 
-  public Speciality(String input) {
-    this.name = new ArrayList<String>(3);
-    if (this.name.size() < 3) {
-      this.name.add(input);
+  public Speciality(String... input) {
+    if (input.length > 3) {
+      return;
     }
+    this.name = new ArrayList<String>(Arrays.asList(input));
   }
 
   public ArrayList<String> getName() {
@@ -37,6 +40,5 @@ public class Speciality {
       this.name.add(name);
     }
   }
-
 
 }
