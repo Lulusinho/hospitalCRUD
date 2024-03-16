@@ -5,7 +5,6 @@ App.class
 actions/Procedure.class
 Parser/Parser.class
 Utils/Speciality.class
-Utils/Sequence.class
 Parser/CSVSpecifier.class
 Utils/Healthinsurance.class
 Utils/Addres.class

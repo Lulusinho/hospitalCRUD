@@ -1,10 +1,8 @@
 package Utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Speciality {
-  private ArrayList<String> name;
+  public String[] name;
 
   @Override
   public String toString() {
@@ -21,24 +19,23 @@ public class Speciality {
   }
 
   public Speciality() {
-    this.name = new ArrayList<String>(3);
+    this.name = new String[3];
   }
 
   public Speciality(String... input) {
     if (input.length > 3) {
       return;
     }
-    this.name = new ArrayList<String>(Arrays.asList(input));
+    this.name = input.clone();
   }
 
-  public ArrayList<String> getName() {
+  public String[] getName() {
     return name;
   }
 
-  public void setName(String name) {
-    if (this.name.size() < 3) {
-      this.name.add(name);
+  public void setName(String... name) {
+    if (name.length < 3) {
+      this.name = name;
     }
   }
-
 }

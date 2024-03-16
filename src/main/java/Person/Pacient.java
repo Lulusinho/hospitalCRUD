@@ -5,7 +5,7 @@ import java.util.InvalidPropertiesFormatException;
 import Utils.Healthinsurance;
 
 public class Pacient extends Person implements Cloneable {
-  public char[] cpf = new char[15];
+  public String cpf;
   public Healthinsurance plan;
 
   public Pacient(Pacient other) {
@@ -14,9 +14,9 @@ public class Pacient extends Person implements Cloneable {
     this.plan = other.plan;
   }
 
-  public Pacient(Person person, char[] cpf, Healthinsurance plan) throws InvalidPropertiesFormatException {
+  public Pacient(Person person, String cpf, Healthinsurance plan) throws InvalidPropertiesFormatException {
     super(person);
-    if (cpf.length > 14) {
+    if (cpf.length() > 14) {
       throw new InvalidPropertiesFormatException(cpf.toString() + "formato errado");
     }
     this.cpf = cpf;
@@ -25,7 +25,8 @@ public class Pacient extends Person implements Cloneable {
 
   @Override
   public String toString() {
-    return this.cpf.toString() + "," + this.name + "," +this.birthdate.toString()+ this.addres + "," + "," + this.plan;
+    return this.cpf.toString() + "," + this.name + "," + this.birthdate.toString() + this.addres + "," + ","
+        + this.plan;
   }
 
   @Override

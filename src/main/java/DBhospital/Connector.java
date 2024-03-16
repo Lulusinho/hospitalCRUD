@@ -5,28 +5,24 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public final class Connector {
-  public static Connection myConnection = null;
+  private static Connection myConnection;
   public static boolean isclosed = true;
-  public static String currentQuery;
 
-  private Connector() {
+  static {
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
-
-    } catch (ClassNotFoundException e) {
-      System.out.println(e.getMessage() + "Driver not found");
+      myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/HOSPITAL", "root", "luislindo");
+      isclosed = false;
+      myConnection.setAutoCommit(false);
+    } catch (ClassNotFoundException | SQLException sqle) {
+      System.out.println(sqle.getMessage() + "Driver not found");
       System.exit(1);
     }
+
   }
 
-  public static void setconnection(String url, String user, String password) {
-    try {
-      myConnection = DriverManager.getConnection(url, user, password);
-      isclosed = false;
-    } catch (SQLException e) {
-      System.err.println(e.getMessage() + "Connectivity issues");
-      System.exit(1);
-    }
+  public static Connection getMyConnection() {
+    return myConnection;
   }
 
   public static void close() {
