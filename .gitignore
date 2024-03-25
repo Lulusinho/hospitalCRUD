@@ -1,7 +1,9 @@
 *.vscode
+*.class
+*.csv
 # Prerequisites
 *.d
-
+target/
 # Object files
 *.o
 *.ko
