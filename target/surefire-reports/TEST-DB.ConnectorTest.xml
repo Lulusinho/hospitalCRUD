@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="DB.ConnectorTest" time="0.441" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="DB.ConnectorTest" time="0.397" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/luis/Documents/java/hospital/target/surefire/surefirebooter1250870925382342098.jar /home/luis/Documents/java/hospital/target/surefire 2024-03-16T16-13-47_815-jvmRun1 surefire7062752797127618137tmp surefire_0858230955362893429tmp"/>
+    <property name="sun.java.command" value="/home/luis/Documents/java/hospital/target/surefire/surefirebooter6194819616531436082.jar /home/luis/Documents/java/hospital/target/surefire 2024-03-17T15-50-31_141-jvmRun1 surefire4389355794290896352tmp surefire_015898545962156072080tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/luis/Documents/java/hospital/target/test-classes:/home/luis/Documents/java/hospital/target/classes:/home/luis/.m2/repository/com/mysql/mysql-connector-j/8.3.0/mysql-connector-j-8.3.0.jar:/home/luis/.m2/repository/com/google/protobuf/protobuf-java/3.25.1/protobuf-java-3.25.1.jar:/home/luis/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/luis/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/luis/.m2/repository/org/apache/commons/commons-csv/1.10.0/commons-csv-1.10.0.jar:/home/luis/.m2/repository/commons-io/commons-io/2.15.1/commons-io-2.15.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/luis/Documents/java/hospital/target/surefire/surefirebooter1250870925382342098.jar"/>
+    <property name="surefire.real.class.path" value="/home/luis/Documents/java/hospital/target/surefire/surefirebooter6194819616531436082.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.10+7-Ubuntu-123.10.1"/>
     <property name="user.name" value="luis"/>
@@ -51,6 +51,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testinsert" classname="DB.ConnectorTest" time="0.408"/>
+  <testcase name="testinsert" classname="DB.ConnectorTest" time="0.375"/>
   <testcase name="testconnection" classname="DB.ConnectorTest" time="0"/>
 </testsuite>
