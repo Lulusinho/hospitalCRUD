@@ -69,6 +69,15 @@
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <mainClass>App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
+
           <version>3.0.2</version>
         </plugin>
         <plugin>
@@ -79,6 +88,7 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>exec-maven-plugin</artifactId>

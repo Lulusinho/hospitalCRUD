@@ -1,7 +1,5 @@
 package Person;
 
-import java.util.InvalidPropertiesFormatException;
-
 import Utils.Healthinsurance;
 
 public class Pacient extends Person implements Cloneable {
@@ -14,10 +12,10 @@ public class Pacient extends Person implements Cloneable {
     this.plan = other.plan;
   }
 
-  public Pacient(Person person, String cpf, Healthinsurance plan) throws InvalidPropertiesFormatException {
+  public Pacient(Person person, String cpf, Healthinsurance plan) throws AssertionError {
     super(person);
     if (cpf.length() > 14) {
-      throw new InvalidPropertiesFormatException(cpf.toString() + "formato errado");
+      throw new AssertionError(cpf.toString() + "formato errado");
     }
     this.cpf = cpf;
     this.plan = plan;
