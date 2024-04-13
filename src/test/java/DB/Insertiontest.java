@@ -1,7 +1,6 @@
 package DB;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.*;
 import DBhospital.DAO;
 import Person.Doctor;
 import Person.Pacient;
@@ -14,7 +13,7 @@ import actions.Appointment;
 public class Insertiontest {
 
   @Test
-  public void testdoc() {
+  public void doctest() {
     Person person = new Person("lulu", "04122003", new Addres("nova barra", "barra do garças", 12345, 12345));
     Doctor doc = new Doctor(person, new Speciality("fisio"), 234, 1234);
     if (DAO.save(doc)) {
@@ -25,14 +24,15 @@ public class Insertiontest {
   }
 
   @Test
-  public void testpacient() {
+  public void pacienttest() {
     Person person = new Person("luis", "11020202", new Addres("lugr", "outro lugar", 4321, 4321));
     Pacient pacient = new Pacient(person, "39093992821", new Healthinsurance("barra", 1234));
     DAO.save(pacient);
 
   }
+
   @Test
-  public void testprocedure() {
+  public void appointmenttest() {
     Person person = new Person("lulu", "04122003", new Addres("nova barra", "barra do garças", 12345, 12345));
     Doctor doc = new Doctor(person, new Speciality("fisio"), 234, 1234);
     Person person1 = new Person("luis", "11020202", new Addres("lugr", "outro lugar", 4321, 4321));

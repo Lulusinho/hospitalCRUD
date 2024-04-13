@@ -1,6 +1,7 @@
 *.vscode
 *.class
 *.csv
+.dockerignore
 # Prerequisites
 *.d
 target/

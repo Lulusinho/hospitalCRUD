@@ -1,66 +1,87 @@
 package actions;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-
-import DBhospital.Connector;
 import Person.*;
 
 public class Procedure {
-  public ProcedureType pt;
   public Pacient pacient;
   public Doctor doc;
   public String date;
-  public Integer durationtime;
+  public double durationtime;
+  public double cost;
+  public String type;
+  public String room;
 
-  private Procedure(Pacient pacient, Doctor doc, String date, Integer durationtime) {
-    this.pacient = new Pacient(pacient);
-    this.doc = new Doctor(doc);
-    this.date = new String(date);
-    this.durationtime = durationtime;
+  public Procedure(Procedure builder) {
+    this.pacient = new Pacient(builder.pacient);
+    this.doc = new Doctor(builder.doc);
+    this.date = new String(builder.date);
+    this.durationtime = builder.durationtime;
+    this.cost = builder.cost;
+    this.type = new String(builder.type);
+    this.room = new String(builder.room);
   }
 
-  public void marcar(Doctor med, Pacient pacient, String date) {
-    Connection myConnection = Connector.getMyConnection();
-    if (myConnection == null) {
-      System.out.println("ELE É NULL");
-      return;
+  private Procedure(ProcedureBuilder builder) {
+    this.pacient = builder.pacient;
+    this.doc = builder.doc;
+    this.date = builder.date;
+    this.durationtime = builder.durationtime;
+    this.cost = builder.cost;
+    this.type = builder.type;
+    this.room = builder.room;
+  }
+
+  public static class ProcedureBuilder {
+    private String type;
+    private double cost;
+    private Pacient pacient;
+    private Doctor doc;
+    private String date;
+    private double durationtime;
+    private String room;
+
+    public ProcedureBuilder setType(String type) {
+      type.toUpperCase();
+      if (type.equals("FARINGOPLASTIA") || type.equals("NEUROCIRURGIA")) {
+        this.type = type;
+        return this;
+      }
+      throw new RuntimeException();
     }
-    try (PreparedStatement insertstm = myConnection
-        .prepareStatement(
-            "INSERT INTO ADDRES (PACIENT_ID, DOCTOR_ID, PROCEDURE_DATE, PRICE, DURATION, ROOM, PROCEDURE_TYPE)"
-                + "VALUES (?, ?, ?, ?)")) {
 
-      insertstm.execute();
-      myConnection.commit();
-    } catch (Exception e) {
-      System.err.println("erro ao inserir" + e.getLocalizedMessage());
-      System.err.println(e.getMessage());
-      System.exit(-2);
+    public ProcedureBuilder setPacient(Pacient pacient) {
+      this.pacient = pacient;
+      return this;
+
     }
 
-  }
+    public ProcedureBuilder setroom(String str) {
+      this.room = new String(str);
+      return this;
 
-  public void cancelar(Procedure object) {
-  }
+    }
 
-  public ArrayList<Doctor> pesquisarPorMedico(Pacient object) {
-    return new ArrayList<Doctor>();
-  }
+    public ProcedureBuilder setDate(String Date) {
+      this.date = Date;
+      return this;
 
-  public double totalvalue() {
-    return (double) (this.doc.payment * this.durationtime) + this.pt.price;
-  };
+    }
 
-  public enum ProcedureType {
-    FARINGOPLATIA(1500), NEUROCIRURGIA(1000);
+    public ProcedureBuilder setCost(double minutesDuration, double costpminut) {
+      this.durationtime = minutesDuration;
+      this.cost = minutesDuration * costpminut;
+      return this;
 
-    public final double price;
+    }
 
-    private ProcedureType(int procedureCost) {
-      this.price = procedureCost;
+    public ProcedureBuilder setDoctor(Doctor doc) {
+      this.doc = doc;
+      return this;
+
+    }
+
+    public Procedure build() {
+      return new Procedure(this);
     }
   }
-
 }

@@ -1,6 +1,6 @@
 package DB;
 
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
 import DBhospital.DAO;
 import Person.Doctor;

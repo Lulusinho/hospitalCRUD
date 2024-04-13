@@ -15,7 +15,7 @@ public final class SpecialityPersistency {
     PreparedStatement insert = con
         .prepareStatement(insertstr + "VALUES (?, ?, ?, ?)");
     int counter = 1;
-    insert.setInt(counter, crm);
+    insert.setInt(1, crm);
     for (String string : data) {
       counter++;
       insert.setString(counter, string);
@@ -30,9 +30,9 @@ public final class SpecialityPersistency {
         break;
 
       default:
-        return;
+        break;
     }
-    insert.execute();
+    insert.executeUpdate();
   }
 
   public static void update(Integer crm, Integer oldcrm, String... data) throws SQLException {

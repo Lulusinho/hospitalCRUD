@@ -6,13 +6,12 @@ import java.sql.SQLException;
 import Person.*;
 import actions.*;
 import DBhospital.Persons.*;
+import DBhospital.Utils.ProcedurePersistency;
 
 public final class DAO {
   private static PreparedStatement apptinsert;
   private static PreparedStatement appupdate;
   private static PreparedStatement appdelete;
-
-  private static PreparedStatement proctinsert;
 
   static {
     var con = Connector.getMyConnection();
@@ -45,7 +44,9 @@ public final class DAO {
       Connector.getMyConnection().commit();
       return true;
     } catch (SQLException e) {
-      return false;
+      System.out.println(e.getSQLState() + " " + e.getErrorCode());
+      e.printStackTrace();
+      throw new RuntimeException();
     }
 
   }
@@ -60,11 +61,20 @@ public final class DAO {
     } catch (SQLException e) {
       System.out.println(e.getSQLState() + " " + e.getErrorCode());
       e.printStackTrace();
+      throw new RuntimeException();
     }
 
   }
 
   public static void save(Procedure Object) {
+    try {
+      ProcedurePersistency.insert(Object, Object.room);
+      Connector.getMyConnection().commit();
+    } catch (SQLException e) {
+      System.out.println(e.getSQLState() + " " + e.getErrorCode());
+      e.printStackTrace();
+      throw new RuntimeException();
+    }
 
   }
 
@@ -115,7 +125,13 @@ public final class DAO {
   }
 
   public static void delete(Procedure Object) {
-
+    try {
+      ProcedurePersistency.delete(Object);
+      Connector.getMyConnection().commit();
+    } catch (SQLException e) {
+      System.out.println(e.getSQLState() + " " + e.getErrorCode());
+      e.printStackTrace();
+    }
   }
 
   public static boolean update(Pacient Object, String oldcpf) {
@@ -162,10 +178,19 @@ public final class DAO {
       e.printStackTrace();
     }
 
-
   }
 
-  public static void update(Procedure Object) {
+  public static void update(Procedure object, Procedure oldobject) {
+    try {
+      ProcedurePersistency.delete(oldobject);
+      ProcedurePersistency.insert(object, object.room);
+
+      Connector.getMyConnection().commit();
+    } catch (SQLException e) {
+      System.out.println(e.getSQLState() + " " + e.getErrorCode());
+      e.printStackTrace();
+      throw new RuntimeException();
+    }
 
   }
 

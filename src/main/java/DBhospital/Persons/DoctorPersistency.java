@@ -43,7 +43,7 @@ public final class DoctorPersistency {
     insert.setInt(1, doc.crm);
     insert.setDouble(2, doc.payment);
     insert.setInt(3, personid);
-    insert.execute();
+    insert.executeUpdate();
   }
 
   public static int update(Doctor newdata, int oldcrm) throws SQLException {
