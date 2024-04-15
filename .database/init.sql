@@ -85,3 +85,70 @@ CREATE TABLE
     Foreign Key (PACIENT_ID) REFERENCES PACIENT (CPF) ON UPDATE RESTRICT ON DELETE RESTRICT,
     Foreign Key (DOCTOR_ID) REFERENCES DOCTOR (CRM) ON UPDATE RESTRICT ON DELETE RESTRICT
   );
+
+INSERT INTO ADDRES (PUBLIC_AREA, DISTRICT, NUM, CEP) VALUES
+('Main Street', 'Downtown', 123, 123456),
+('Park Avenue', 'Uptown', 456, 789012),
+('Broadway', 'Midtown', 789, 345678),
+('First Street', 'Downtown', 101, 101010),
+('Second Avenue', 'Uptown', 222, 222222),
+('Third Street', 'Midtown', 333, 333333),
+('Fourth Avenue', 'Uptown', 444, 444444),
+('Fifth Avenue', 'Downtown', 555, 555555);
+
+-- Populate PERSON table
+INSERT INTO PERSON (NAM, BIRTH, ADDRES_NUM, ADDRES_CEP, PERSON_TYPE) VALUES
+('John Doe', '1990-05-15', 123, 123456, 'DOCTOR'),
+('David Wilson', '1992-02-15', 555, 555555, 'DOCTOR'),
+('Michael Johnson', '1983-09-25', 101, 101010, 'DOCTOR'),
+('Alice Johnson', '1978-12-10', 789, 345678, 'BOOTH'),
+('Daniel Brown', '1976-11-18', 333, 333333, 'BOOTH'),
+('Jane Smith', '1985-08-20', 456, 789012, 'PACIENT'),
+('Emily White', '1995-04-12', 222, 222222, 'PACIENT'),
+('Sophia Lee', '1988-07-30', 444, 444444, 'PACIENT');
+
+-- Populate SPECIALITY table
+INSERT INTO SPECIALITY (CRM, SPT1, SPT2, SPT3) VALUES
+(123456, 'Cardiology', 'Internal Medicine', 'Pediatrics'),
+(789012, 'Orthopedics', 'Neurology', 'Dermatology'),
+(101010, 'Pediatrics', 'Cardiology', 'Orthopedics'),
+(1234, 'Neurology', 'Dermatology', 'Ophthalmology'),
+(555555,'cirurgiao geral', 'Cardiology', 'Ophthalmology');
+-- Populate PACIENT table
+
+-- Populate DOCTOR table
+INSERT INTO DOCTOR (PERSON_ID, CRM, PAYMENT) VALUES
+(1, 123456, 15.00),
+(2, 789012, 18.00),
+(3, 101010, 20.00),
+(4, 555555, 220.00),
+(5, 1234, 180.00);
+INSERT INTO PACIENT (PERSON_ID, CPF) VALUES
+(4, '123.456.789-00'),
+(5, '390.939.928-21'),
+(6, '987.654.321-00'),
+(7, '111.222.333-44'),
+(8, '555.444.333-22');
+
+-- Populate INSURANCE table
+INSERT INTO INSURANCE (PACIENT_ID, ISRC_NAME, PAYMENT) VALUES
+('123.456.789-00', 'XYZ Insurance', 1230.00),
+('390.939.928-21', 'XYZ Insurance', 1430.00),
+('111.222.333-44', 'XYZ Insurance', 500.00),
+('555.444.333-22', 'XYZ Insurance', 600.00);
+
+-- Populate APPOINTMENT table
+INSERT INTO APPOINTMENT (PACIENT_ID, DOCTOR_ID, APPOINTMENT_DATE) VALUES
+('123.456.789-00', 123456, '2024-04-15'),
+('123.456.789-00', 789012, '2024-04-20'),
+('123.456.789-00', 101010, '2024-04-20'),
+('390.939.928-21', 555555, '2024-04-20'),
+('555.444.333-22', 1234, '2024-04-20');
+
+-- Populate HOSPITAL_PROCEDURE table
+INSERT INTO HOSPITAL_PROCEDURE (PACIENT_ID, DOCTOR_ID, PROCEDURE_DATE, PRICE, DURATION, ROOM, PROCEDURE_TYPE) VALUES
+('123.456.789-00', 123456, '2024-04-25', 5000.00, 3.5, 'Room 101', 'NEUROCIRURGIA'),
+('123.456.789-00', 789012, '2024-04-25', 5000.00, 3.5, 'Room 101', 'NEUROCIRURGIA'),
+('987.654.321-00', 101010, '2024-04-30', 6000.00, 4.0, 'Room 102', 'FARINGOPLASTIA'),
+('111.222.333-44', 555555, '2024-05-05', 7000.00, 5.0, 'Room 103', 'NEUROCIRURGIA'),
+('555.444.333-22', 1234, '2024-05-10', 8000.00, 4.5, 'Room 104', 'FARINGOPLASTIA');

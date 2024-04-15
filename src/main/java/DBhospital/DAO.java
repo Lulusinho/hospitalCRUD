@@ -1,7 +1,9 @@
 package DBhospital;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import Person.*;
 import actions.*;
@@ -12,6 +14,9 @@ public final class DAO {
   private static PreparedStatement apptinsert;
   private static PreparedStatement appupdate;
   private static PreparedStatement appdelete;
+  private static PreparedStatement selectappointment;
+  private static PreparedStatement selectProcedure;
+  private static Statement selectall;
 
   static {
     var con = Connector.getMyConnection();
@@ -22,6 +27,35 @@ public final class DAO {
           "UPDATE `APPOINTMENT` SET `APPOINTMENT_DATE`=?, `DOCTOR_ID`=?, `PACIENT_ID`=? WHERE `DOCTOR_ID` = ? AND `PACIENT_ID` = ?");
       appdelete = con.prepareStatement(
           "DELETE AP FROM `APPOINTMENT` AP WHERE `PACIENT_ID` = ? AND `DOCTOR_ID` = ?");
+      selectappointment = con.prepareStatement("""
+            SELECT PE.`NAM`, PE.`BIRTH`, PA.`CPF`, PERS.`NAM`, PERS.`PERSON_TYPE`, AP.`APPOINTMENT_DATE`
+            from `PACIENT` PA
+            LEFT JOIN `PERSON` PE
+            ON PA.`PERSON_ID` = PE.`PERSON_ID`
+            LEFT JOIN `APPOINTMENT` AP
+            ON `AP`.`PACIENT_ID` = PA.`CPF`
+            LEFT JOIN `DOCTOR` D
+            ON `D`.`CRM` = AP.`DOCTOR_ID`
+            LEFT JOIN PERSON PERS
+            ON PERS.`PERSON_ID` = D.`PERSON_ID`
+            WHERE `PA`.`CPF` = ?;
+          """);
+      selectProcedure = con.prepareStatement(
+          """
+                SELECT PE.`NAM`, PE.`BIRTH`, PA.`CPF`, PERS.`NAM`, PERS.`PERSON_TYPE`, PRO.`PROCEDURE_DATE`, PRO.`PROCEDURE_TYPE`
+                from `PACIENT` PA
+                LEFT JOIN `PERSON` PE
+                ON PA.`PERSON_ID` = PE.`PERSON_ID`
+                LEFT JOIN `HOSPITAL_PROCEDURE` PRO
+                ON PRO.`PACIENT_ID` = PA.`CPF`
+                LEFT JOIN `DOCTOR` D
+                ON `D`.`CRM` = PRO.`DOCTOR_ID`
+                LEFT JOIN PERSON PERS
+                ON PERS.`PERSON_ID` = D.`PERSON_ID`
+                WHERE `PA`.`CPF` = ?;
+              """);
+      selectall = con.createStatement();
+
     } catch (SQLException e) {
       System.err.println("error instantiating DAO  " + e.getSQLState() + e.getMessage());
     }
@@ -192,6 +226,50 @@ public final class DAO {
       throw new RuntimeException();
     }
 
+  }
+
+  public static ResultSet search2() {
+    try {
+      return Connector.getMyConnection().createStatement().executeQuery(
+          """
+                SELECT PE.`NAM` as pacient, PE.`BIRTH` as birth, PA.`CPF` as cpf, PERS.`NAM` as doc, PERS.`PERSON_TYPE` , PRO.`APPOINTMENT_DATE` as date, 'CONSULTA'  as type
+              from `PACIENT` PA
+              LEFT JOIN `PERSON` PE
+              ON PA.`PERSON_ID` = PE.`PERSON_ID`
+              LEFT JOIN `APPOINTMENT` PRO
+              ON PRO.`PACIENT_ID` = PA.`CPF`
+              LEFT JOIN `DOCTOR` D
+              ON `D`.`CRM` = PRO.`DOCTOR_ID`
+              LEFT JOIN PERSON PERS
+                  ON PERS.`PERSON_ID` = D.`PERSON_ID`;""");
+    } catch (SQLException e) {
+      System.out.println(e.getSQLState() + " " + e.getErrorCode());
+      e.printStackTrace();
+      throw new RuntimeException();
+    }
+  }
+
+  public static ResultSet search() {
+    try {
+      return selectall.executeQuery(
+          """
+              SELECT PE.`NAM` as pacient, PE.`BIRTH` as birth, PA.`CPF` as cpf, PERS.`NAM` as doc, PERS.`PERSON_TYPE` , PRO.`PROCEDURE_DATE` as date, PRO.`PROCEDURE_TYPE` as type
+              from `PACIENT` PA
+              LEFT JOIN `PERSON` PE
+              ON PA.`PERSON_ID` = PE.`PERSON_ID`
+              LEFT JOIN `HOSPITAL_PROCEDURE` PRO
+              ON PRO.`PACIENT_ID` = PA.`CPF`
+              LEFT JOIN `DOCTOR` D
+              ON `D`.`CRM` = PRO.`DOCTOR_ID`
+              LEFT JOIN PERSON PERS
+              ON PERS.`PERSON_ID` = D.`PERSON_ID`;"""
+
+      );
+    } catch (SQLException e) {
+      System.out.println(e.getSQLState() + " " + e.getErrorCode());
+      e.printStackTrace();
+      throw new RuntimeException();
+    }
   }
 
 }

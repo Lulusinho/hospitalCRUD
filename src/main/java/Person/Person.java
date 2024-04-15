@@ -2,7 +2,6 @@ package Person;
 
 import Utils.Addres;
 
-
 public class Person {
   public String name;
   public String birthdate;
@@ -20,10 +19,13 @@ public class Person {
   }
 
   public Person() {
-    this.name = null;
+    this.addres = null;
   }
 
   public Person(Person other) {
+    if (other == null) {
+      return;
+    }
     this.addres = other.addres;
     this.birthdate = other.birthdate;
     this.name = other.name;

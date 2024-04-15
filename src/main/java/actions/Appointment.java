@@ -14,9 +14,9 @@ public class Appointment {
   }
 
   public Appointment(Pacient pacient, Doctor doc, String date) {
-    this.pacient = new Pacient(pacient);
-    this.doc = new Doctor(doc);
-    this.date = new String(date);
+    this.pacient = pacient;
+    this.doc = doc;
+    this.date = date;
 
   }
 

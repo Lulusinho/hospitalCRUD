@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane focusTraversable="true" prefHeight="683.0" prefWidth="1248.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainController">
+   <center>
+      <BorderPane prefHeight="672.0" prefWidth="1188.0" BorderPane.alignment="CENTER">
+         <center>
+            <TableView fx:id="maintable" focusTraversable="false" prefHeight="643.0" prefWidth="967.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="date" prefWidth="123.0" text="date" />
+                <TableColumn fx:id="pacient" prefWidth="214.0" text="Pacient" />
+                  <TableColumn fx:id="birth" prefWidth="148.0" text="birth" />
+                  <TableColumn fx:id="cpf" prefWidth="143.0" text="CPF" />
+                  <TableColumn fx:id="doc" prefWidth="172.0" text="doctor" />
+                  <TableColumn fx:id="type" prefWidth="114.0" text="type" />
+              </columns>
+            </TableView>
+         </center>
+         <top>
+            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                  <Label fx:id="wellcomelb" blendMode="SRC_ATOP" text="Wellcome:">
+                     <padding>
+                        <Insets left="200.0" />
+                     </padding>
+                  </Label>
+              </items>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </ToolBar>
+         </top>
+         <right>
+            <TabPane prefHeight="643.0" prefWidth="335.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab fx:id="newregistration" text="new Registration">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="612.0" prefWidth="301.0">
+                           <children>
+                              <ScrollBar layoutX="225.0" layoutY="139.0" orientation="VERTICAL" prefHeight="602.0" prefWidth="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label layoutX="14.0" layoutY="14.0" text="To register a person">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textpersonname" layoutX="14.0" layoutY="45.0" promptText="Name" />
+                              <DatePicker fx:id="birthdatepicker" layoutX="14.0" layoutY="81.0" prefHeight="27.0" prefWidth="166.0" promptText="birth" />
+                              <TextField fx:id="textcep" layoutX="14.0" layoutY="120.0" prefHeight="26.0" prefWidth="99.0" promptText="CEP" />
+                              <TextField fx:id="textnumaddr" layoutX="131.0" layoutY="120.0" prefHeight="26.0" prefWidth="99.0" promptText="number" />
+                              <TextField fx:id="textcity" layoutX="14.0" layoutY="163.0" prefHeight="26.0" prefWidth="99.0" promptText="City" />
+                              <TextField fx:id="textpublicspace" layoutX="131.0" layoutY="163.0" prefHeight="26.0" prefWidth="99.0" promptText="logradouro" />
+                              <Label layoutX="13.0" layoutY="196.0" text="Pacient">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textcpf" layoutX="13.0" layoutY="230.0" promptText="CPF" />
+                              <TextField fx:id="textinsurancename" layoutX="11.0" layoutY="275.0" prefHeight="26.0" prefWidth="99.0" promptText="Insurance" />
+                              <TextField fx:id="textvalue" layoutX="128.0" layoutY="275.0" prefHeight="26.0" prefWidth="99.0" promptText="value" />
+                              <Label layoutX="13.0" layoutY="320.0" text="Doctor">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textcrm" layoutX="10.0" layoutY="348.0" prefHeight="26.0" prefWidth="99.0" promptText="crm" />
+                              <TextField fx:id="textspeciality" layoutX="10.0" layoutY="383.0" promptText="Speciality" />
+                              <Button fx:id="registerpacient" layoutX="222.0" layoutY="217.0" mnemonicParsing="false" onAction="#savethepacient" rotate="90.0" text="register Pacient" />
+                              <Button fx:id="registerdoc" layoutX="224.0" layoutY="361.0" mnemonicParsing="false" onAction="#savethedoc" rotate="90.0" text="register doctor" />
+                              <TextField fx:id="textpayment" layoutX="118.0" layoutY="348.0" prefHeight="26.0" prefWidth="99.0" promptText="payment" />
+                              <Label fx:id="retrive" layoutX="15.0" layoutY="443.0" prefHeight="139.0" prefWidth="288.0" textFill="RED" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="deletetab" text="delete">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollBar layoutX="225.0" layoutY="139.0" orientation="VERTICAL" prefHeight="602.0" prefWidth="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label contentDisplay="RIGHT" layoutX="54.0" layoutY="24.0" prefHeight="44.0" prefWidth="229.0" text="What do you want to delete?" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="-45.0" layoutY="477.0" mnemonicParsing="false" onAction="#deletePacient" prefHeight="29.0" prefWidth="199.0" rotate="90.0" text="delete Pacient" />
+                              <Button layoutX="101.0" layoutY="477.0" mnemonicParsing="false" onAction="#deleteProcedure" prefHeight="29.0" prefWidth="199.0" rotate="90.0" text="delete Procedure" />
+                              <Button layoutX="28.0" layoutY="477.0" mnemonicParsing="false" onAction="#deleteDoctor" prefHeight="29.0" prefWidth="199.0" rotate="90.0" text="delete doctor" />
+                              <Button layoutX="175.0" layoutY="477.0" mnemonicParsing="false" onAction="#deleteAppointment" prefHeight="29.0" prefWidth="199.0" rotate="90.0" text="delete Appointment" />
+                              <TextField fx:id="deletecpf" layoutX="26.0" layoutY="86.0" prefHeight="40.0" prefWidth="284.0" promptText="Pacient's cpf" />
+                              <TextField fx:id="deletecrm" layoutX="26.0" layoutY="154.0" prefHeight="40.0" prefWidth="284.0" promptText="Doctor's crm" />
+                              <DatePicker fx:id="deletedate" layoutX="26.0" layoutY="247.0" prefHeight="39.0" prefWidth="278.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="newregistration1" text="add">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="612.0" prefWidth="301.0">
+                           <children>
+                              <ScrollBar layoutX="225.0" layoutY="139.0" orientation="VERTICAL" prefHeight="602.0" prefWidth="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <DatePicker fx:id="adddatepicker" layoutX="15.0" layoutY="8.0" prefHeight="27.0" prefWidth="166.0" promptText="birth" />
+                              <Label layoutX="15.0" layoutY="50.0" text="Pacient">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addcpf" layoutX="17.0" layoutY="71.0" promptText="CPF" />
+                              <Label layoutX="17.0" layoutY="111.0" text="Doctor">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="addcrm" layoutX="16.0" layoutY="132.0" prefHeight="26.0" prefWidth="99.0" promptText="crm" />
+                              <Button fx:id="addappointment" layoutX="189.0" layoutY="320.0" mnemonicParsing="false" onAction="#addappointment1" rotate="90.0" text="add appointment" />
+                              <Button fx:id="addprocedure" layoutX="11.0" layoutY="320.0" mnemonicParsing="false" onAction="#addprocedure1" rotate="90.0" text="add procedure" />
+                              <Label fx:id="retrive1" layoutX="15.0" layoutY="443.0" prefHeight="139.0" prefWidth="288.0" textFill="RED" />
+                              <TextField fx:id="addtype" layoutX="3.0" layoutY="208.0" prefHeight="26.0" prefWidth="99.0" promptText="type" />
+                              <TextField fx:id="addduration" layoutX="215.0" layoutY="208.0" prefHeight="26.0" prefWidth="99.0" promptText="duration" />
+                              <TextField fx:id="addroom" layoutX="110.0" layoutY="208.0" prefHeight="26.0" prefWidth="99.0" promptText="room" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </right>
+      </BorderPane>
+   </center>
+   <cursor>
+      <Cursor fx:constant="MOVE" />
+   </cursor>
+</BorderPane>
